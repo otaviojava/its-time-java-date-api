@@ -1,4 +1,4 @@
-package org.example;
+package com.otavio.examples.date;
 
 
 import org.junit.jupiter.api.Test;
