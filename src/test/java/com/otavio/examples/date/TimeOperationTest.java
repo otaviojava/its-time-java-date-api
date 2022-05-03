@@ -48,17 +48,25 @@ public class TimeOperationTest {
     @Test
     public void shouldTimeZone() {
         ZoneId saoPaulo = ZoneId.of("America/Sao_Paulo");
-        ZoneId portugal = ZoneId.of("Portugal");
-        LocalDateTime timeSP = Year.of(2021).atMonth(Month.MAY).atDay(3)
-                .atTime(12,0,0);
-
-        LocalDateTime timeLisbon = Year.of(2021).atMonth(Month.MAY).atDay(3)
-                .atTime(16,0,0);
         ZonedDateTime adenNow = ZonedDateTime.now(saoPaulo);
         ZoneOffset offset = adenNow.getOffset();
         Assertions.assertEquals(saoPaulo, adenNow.getZone());
         Assertions.assertEquals("-03:00", offset.getId());
     }
 
+    @Test
+    public void shouldCompareTimeZones() {
+        ZoneId saoPaulo = ZoneId.of("America/Sao_Paulo");
+        ZoneId portugal = ZoneId.of("Portugal");
+        LocalDateTime timeSP = Year.of(2021).atMonth(Month.MAY).atDay(3)
+                .atTime(12,0,0);
+
+        LocalDateTime timeLisbon = Year.of(2021).atMonth(Month.MAY).atDay(3)
+                .atTime(16,0,0);
+
+        ZonedDateTime zoneSaoPaulo = ZonedDateTime.of(timeSP, saoPaulo);
+        ZonedDateTime zoneLisbon = ZonedDateTime.of(timeLisbon, portugal);
+        Assertions.assertTrue(zoneSaoPaulo.isEqual(zoneLisbon));
+    }
 
 }
