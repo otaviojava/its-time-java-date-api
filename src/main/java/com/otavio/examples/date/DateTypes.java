@@ -12,7 +12,7 @@ import java.time.Year;
 import java.time.YearMonth;
 import java.time.ZonedDateTime;
 
-public class App {
+public class DateTypes {
     public static void main(String[] args) {
 
         DayOfWeek dayOfWeek = DayOfWeek.MONDAY;
